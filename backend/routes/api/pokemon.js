@@ -54,7 +54,7 @@ router.get('/battle', asyncHandler(async function(req, res){
 
 router.get('/:id', asyncHandler(async function(req, res) {
   const pokemon = await PokemonRepository.one(req.params.id);
-  console.log("--------------", pokemon)
+  // console.log("--------------", pokemon)
   return res.json(pokemon);
 }));
 
