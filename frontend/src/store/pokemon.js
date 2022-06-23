@@ -42,14 +42,28 @@ export const createPokemon = (pokemon) => async dispatch => {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(pokemon)
-  })
+  });
 
   if (response.ok) {
     const newPokemon = await response.json();
     dispatch(addOnePokemon(newPokemon))
     return newPokemon;
-  }
-}
+  };
+};
+
+export const editPokemon = (pokemon, id) => async dispatch => {
+  const response = await fetch(`/api/pokemon/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(pokemon)
+  });
+
+  if (response.ok) {
+    const updatedPokemon = await response.json();
+    dispatch(addOnePokemon(updatedPokemon))
+    return updatedPokemon;
+  };
+};
 
 export const getPokemonTypes = () => async dispatch => {
   const response = await fetch(`/api/pokemon/types`);
